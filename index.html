@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shaik Sazid | Full-stack developer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231A1A2E'/><text x='32' y='46' font-family='Arial,Helvetica,sans-serif' font-size='42' font-weight='800' text-anchor='middle' fill='white'>S</text><circle cx='51' cy='13' r='5' fill='%238D99AE'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1A1A2E; --surface:#2B2D42; --muted:#8D99AE; --text:#FFFFFF; --line:rgba(141,153,174,.28); --node:#8D99AE; --edge:#8D99AE; --hot:#FFFFFF;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--bg:#FFFFFF;--surface:#EEF0F4;--muted:#4d5870;--text:#1A1A2E;--line:rgba(43,45,66,.2);--node:#2B2D42;--edge:#8D99AE;--hot:#1A1A2E}
+}
+:root[data-theme="light"]{--bg:#FFFFFF;--surface:#EEF0F4;--muted:#4d5870;--text:#1A1A2E;--line:rgba(43,45,66,.2);--node:#2B2D42;--edge:#8D99AE;--hot:#1A1A2E}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--muted);outline-offset:4px;border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 5vw 16px;background:linear-gradient(var(--bg),transparent)}
+nav b{font:800 1.05rem var(--head);letter-spacing:.01em}
+nav div{display:flex;gap:1.6rem}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem;transition:color .2s}
+nav a:hover{color:var(--text)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 5vw}
+.hero{min-height:100svh;display:flex;align-items:center}
+.hero h1{font:800 clamp(3rem,9vw,7.2rem)/.95 var(--head);letter-spacing:-.035em;margin:0 0 1.4rem}
+.hero p{max-width:34ch;font-size:1.2rem;color:var(--muted);margin:0 0 2.2rem}
+.hero .in>*{opacity:0;transform:translateY(18px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .in>:nth-child(2){animation-delay:.18s}.hero .in>:nth-child(3){animation-delay:.34s}
+@keyframes up{to{opacity:1;transform:none}}
+.btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;text-decoration:none;font-weight:500;border:1px solid var(--line);transition:background .2s,color .2s,border-color .2s}
+.btn.main{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn:hover{border-color:var(--muted)}
+.btn.main:hover{background:var(--muted);border-color:var(--muted)}
+section{padding:clamp(4rem,10vw,7.5rem) 0;background:var(--bg)}
+section.alt{background:var(--surface)}
+h2{font:700 clamp(1.8rem,4vw,2.6rem)/1.1 var(--head);letter-spacing:-.02em;margin:0 0 2.2rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.about p{margin:0 0 1.1rem;max-width:60ch}
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.facts li{padding:1rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem}
+.facts span{color:var(--muted);text-align:right}
+.proj{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);gap:1rem 3rem;padding:2.2rem 0;border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj h3{font:700 1.7rem/1.15 var(--head);margin:0;letter-spacing:-.015em}
+.proj p{margin:0 0 .9rem;max-width:58ch}
+.proj .stack{color:var(--muted);font-size:.95rem}
+.proj a{color:var(--text);text-underline-offset:4px;text-decoration-color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem 3rem}
+.skills h3{font:700 1.1rem var(--head);margin:0 0 .5rem}
+.skills p{margin:0;color:var(--muted)}
+.edu{display:grid;gap:1.8rem;max-width:720px}
+.edu div{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.edu strong{font:700 1.2rem var(--head)}
+.edu span{color:var(--muted)}
+.contact h2{font-size:clamp(2.2rem,6vw,4.4rem);max-width:14ch}
+footer{background:var(--bg);padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){
+  nav div{gap:1rem}.about,.proj{grid-template-columns:1fr}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero .in>*{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<nav aria-label="Main">
+  <b>Sazid</b>
+  <div><a href="#work">Work</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+</nav>
+
+<header class="hero">
+  <div class="wrap"><div class="in">
+    <h1>Shaik<br>Sazid</h1>
+    <p>Full-stack developer building AI products.Front end, back end, and a little AI in between. Yes, I do all of it.
+</p>
+    <div class="btns"><a class="btn main" href="#work">See my projects</a><a class="btn" href="https://github.com/ShaikSazid" target="_blank" rel="noopener">GitHub</a></div>
+  </div></div>
+</header>
+
+<main>
+  <section id="work"><div class="wrap">
+    <h2>Selected work</h2>
+    <article class="proj">
+      <h3>Intervia</h3>
+      <div><p>A voice-mode AI interviewer. You talk, it listens, asks follow-ups, and runs a mock interview the way a real panel would.</p><div class="stack">Voice AI, React, Node.js</div><p style="margin:.7rem 0 0"><a href="https://intervia-lac.vercel.app/signup" target="_blank" rel="noopener">Try the live demo</a> &nbsp;&nbsp; <a href="https://github.com/ShaikSazid/Intervia" target="_blank" rel="noopener">View the repository</a></p></div>
+    </article>
+    <article class="proj">
+      <h3>Codebase Navigator</h3>
+      <div><p>Paste a GitHub repository and get an architecture graph, plain-language file explanations, a Q&amp;A chat over the code, and an onboarding path for new contributors.</p><div class="stack">React, TypeScript, Tailwind, RAG</div><p style="margin:.7rem 0 0"><a href="https://codebase-navigator-nine.vercel.app/" target="_blank" rel="noopener">Try the live demo</a> &nbsp;&nbsp; <a href="https://github.com/ShaikSazid/codebase-navigator" target="_blank" rel="noopener">View the repository</a></p></div>
+    </article>
+    <article class="proj">
+      <h3>GitHub PR Risk Analyzer</h3>
+      <div><p>Triages pull requests by risk. A Random Forest model scores the change, and Gemini 2.5 Flash explains why, so reviewers know where to look first.</p><div class="stack">FastAPI, React, scikit-learn, Gemini 2.5 Flash</div><p style="margin-top:.7rem"><a href="https://github.com/ShaikSazid/github-pr-risk-analyzer" target="_blank" rel="noopener">View the repository</a></p></div>
+    </article>
+  </div></section>
+
+  <section id="skills" class="alt"><div class="wrap">
+    <h2>What I work with</h2>
+    <div class="skills">
+      <div><h3>Languages</h3><p>Java, JavaScript, TypeScript, Python</p></div>
+      <div><h3>Frontend</h3><p>React, Tailwind, three.js</p></div>
+      <div><h3>Backend</h3><p>Node.js, Express, FastAPI, BullMQ</p></div>
+      <div><h3>Data</h3><p>PostgreSQL, MongoDB, Redis, AWS S3</p></div>
+      <div><h3>AI</h3><p>RAG, LLM apps, Random Forest models</p></div>
+      <div><h3>Delivery</h3><p>Docker, GitHub Actions</p></div>
+    </div>
+  </div></section>
+
+  <section id="about"><div class="wrap">
+    <h2>About</h2>
+    <div class="about">
+      <div>
+        <p>I build full-stack apps end to end, from the interface to the queue that runs behind it. Lately I focus on tools that put language models to practical use, like reading a codebase or running an interview.</p>
+        <p>I’m finishing my MCA and looking for a software engineering role where I can ship real products and keep learning.</p>
+      </div>
+      <div>
+        <ul class="facts">
+          <li>MCA, RV Institute of Technology, Guntur <span>2024 to 2026, CGPA 8.5</span></li>
+          <li>BSc Computer Science, KLR Degree College, Giddalur <span>2020 to 2023</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="contact" class="alt contact"><div class="wrap">
+    <h2>Let’s build something together.</h2>
+    <div class="btns"><a class="btn main" href="mailto:Shaiksazid7386@gmail.com">Shaiksazid7386@gmail.com</a><a class="btn" href="tel:+917386059066">7386059066</a><a class="btn" href="https://github.com/ShaikSazid" target="_blank" rel="noopener">GitHub</a></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">Shaik Sazid. Designed and built by hand, with three.js.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var canvas=document.getElementById('bg');
+  if(!window.THREE){return;}
+  var renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});}catch(e){return;}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  var scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(55,1,.1,50);
+  camera.position.z=7.5;
+  var group=new THREE.Group(); scene.add(group);
+
+  // node graph: points in a sphere, joined when close
+  var N=120, R=3.3, pts=[], pos=new Float32Array(N*3), i, j;
+  for(i=0;i<N;i++){
+    var u=Math.random(),v=Math.random(),th=2*Math.PI*u,ph=Math.acos(2*v-1),r=R*Math.cbrt(Math.random());
+    var p=new THREE.Vector3(r*Math.sin(ph)*Math.cos(th),r*Math.sin(ph)*Math.sin(th),r*Math.cos(ph));
+    pts.push(p); pos.set([p.x,p.y,p.z],i*3);
+  }
+  var lp=[];
+  for(i=0;i<N;i++)for(j=i+1;j<N;j++){ if(pts[i].distanceTo(pts[j])<1.25){lp.push(pts[i].x,pts[i].y,pts[i].z,pts[j].x,pts[j].y,pts[j].z);} }
+  var lg=new THREE.BufferGeometry(); lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+  var lm=new THREE.LineBasicMaterial({transparent:true,opacity:.4});
+  group.add(new THREE.LineSegments(lg,lm));
+
+  var pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  var pm=new THREE.PointsMaterial({size:.09,sizeAttenuation:true});
+  group.add(new THREE.Points(pg,pm));
+
+  // a few bright "hub" nodes that pulse
+  var hubs=[], hm=new THREE.MeshBasicMaterial();
+  for(i=0;i<7;i++){ var m=new THREE.Mesh(new THREE.SphereGeometry(.14,16,16),hm); m.position.copy(pts[i*16]); m.userData.s=Math.random()*6; group.add(m); hubs.push(m); }
+
+  // thin ring around the graph
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(4.1,.008,8,160),new THREE.MeshBasicMaterial({transparent:true,opacity:.35}));
+  ring.rotation.x=1.2; group.add(ring);
+  var ringMat=ring.material;
+
+  function colors(){
+    var cs=getComputedStyle(document.documentElement);
+    pm.color.set(cs.getPropertyValue('--node').trim()||'#8D99AE');
+    lm.color.set(cs.getPropertyValue('--edge').trim()||'#8D99AE');
+    hm.color.set(cs.getPropertyValue('--hot').trim()||'#FFFFFF');
+    ringMat.color.set(cs.getPropertyValue('--edge').trim()||'#8D99AE');
+  }
+  colors();
+  if(window.matchMedia){ var mq=matchMedia('(prefers-color-scheme: light)'); (mq.addEventListener?mq.addEventListener('change',colors):mq.addListener(colors)); }
+
+  function size(){
+    var w=window.innerWidth,h=window.innerHeight;
+    renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+    group.position.x=w>900?2.8:0; group.position.y=w>900?0:1.4;
+    var s=w>900?1:.7; group.scale.setScalar(s);
+  }
+  size(); addEventListener('resize',size);
+
+  var mx=0,my=0,tx=0,ty=0;
+  addEventListener('pointermove',function(e){ tx=(e.clientX/innerWidth-.5); ty=(e.clientY/innerHeight-.5); });
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, t=0;
+
+  function frame(){
+    t+=.016;
+    mx+=(tx-mx)*.05; my+=(ty-my)*.05;
+    var sc=Math.min(scrollY/innerHeight,1);
+    if(!reduce){ group.rotation.y+=.0022; ring.rotation.z+=.003; }
+    group.rotation.x=my*.6+sc*.5; group.rotation.z=mx*.25;
+    camera.position.x=mx*.8; camera.position.z=7.5+sc*2;
+    for(var k=0;k<hubs.length;k++){ var s=1+.45*Math.sin(t*2+hubs[k].userData.s); hubs[k].scale.setScalar(s); }
+    canvas.style.opacity=(1-sc*.8).toFixed(2);
+    renderer.render(scene,camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
